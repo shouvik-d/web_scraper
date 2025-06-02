@@ -107,7 +107,8 @@ for highway in highway_options:
 
 # Save to CSV
 df = pd.DataFrame(data)
-df.to_csv(f"{state}_truck_stops.csv", index=False, encoding='utf-8')
+output_dir = r"C:\Users\SHOUVIK\Desktop\ElectroT\web_scraper\Truckstop_data"
+df.to_csv(f"{output_dir}\\{state}_truck_stops.csv", index=False, encoding='utf-8')
 print(f"\nScraping complete. Saved {len(df)} truck stops to {state}_truck_stops.csv")
 
 driver.quit()
