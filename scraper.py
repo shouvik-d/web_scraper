@@ -61,7 +61,7 @@ for highway in highway_options:
             highway_exit = p_tags[0].text.strip() if len(p_tags) > 0 else ""
 
             # Extract highway route 
-            match = re.search(r'Hwy\s+([A-Z]+)[\s\-]+([0-9A-Z]+)', highway_exit)    # Running search against multiple Regex patterns
+            match = re.search(r'Hwy\s+([A-Z]+)[\s\-]+([0-9A-Z]+)', highway_exit)    # Running search against multiple Regex patterns (including spaces)
             highway_route = f"{match.group(1)}-{match.group(2)}" if match else ''   # Specifically targeting Interstate and Highway routes
 
             # Extract exit
