@@ -5,24 +5,25 @@ from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
 import pandas as pd
 import time
+import re
 
 # Setting up the webdriver with the website link
 driver = webdriver.Chrome()
 driver.get("https://www.truckstopsandservices.com/truckstop-directory2.php")
 wait = WebDriverWait(driver, 15)
 
-#Initial state input ( currently unused except for final file name )
+# Initial state input (currently unused except for final file name)
 state = 'CO'
 
-# selecting the desired state
+# Select the desired state
 Select(wait.until(EC.presence_of_element_located((By.ID, "state_selector")))).select_by_visible_text("CO - Colorado")
 time.sleep(2)
 
-# selects truck stops tab from the drop down.
+# Select 'Truck Stops' from the service category
 Select(wait.until(EC.presence_of_element_located((By.ID, "cat_selector")))).select_by_visible_text("Truck Stops")
 time.sleep(2)
 
-# getting all highway selections
+# Get all highway options
 highway_dropdown = wait.until(EC.presence_of_element_located((By.ID, "highway_selector")))
 highway_options = [
     option.get_attribute("value")
@@ -32,7 +33,7 @@ highway_options = [
 
 data = []
 
-# Looping through each highway 
+# Loop through each highway
 for highway in highway_options:
     print(f"Scraping highway: {highway}")
     Select(highway_dropdown).select_by_value(highway)
@@ -55,29 +56,44 @@ for highway in highway_options:
             name_tag = row.find('span')
             name = name_tag.text.strip() if name_tag else "N/A"
 
-            # Get all <p> tags (location info)
+            # Get all <p> tags
             p_tags = row.find_all('p')
-
-            # Highway and Exit
             highway_exit = p_tags[0].text.strip() if len(p_tags) > 0 else ""
 
-            highway_route = ''
+            # Extract highway route (e.g., I-25, US-85)
+            match = re.search(r'Hwy\s+([A-Z]+-[0-9A-Z]+)', highway_exit)
+            highway_route = match.group(1) if match else ''
+
+            # Extract exit
             exit_num = ''
+            if 'Exit' in highway_exit:
+                exit_match = re.search(r'Exit\s*([A-Za-z0-9\-]+)', highway_exit)
+                if exit_match:
+                    exit_num = f"Exit {exit_match.group(1)}"
 
-            if 'Hwy' in highway_exit:
-                split_info = highway_exit.replace('Hwy', '').strip().split('-')
-                if len(split_info) >= 1:
-                    highway_route = split_info[0].strip()
-                if 'Exit' in highway_exit:
-                    exit_split = highway_exit.split('Exit')
-                    if len(exit_split) > 1:
-                        exit_num = 'Exit ' + exit_split[1].strip()
+            # Extract number of truck parking spots
+            truck_parking_spots = 0
+            for p in p_tags:
+                if '# Truck Parking Spots:' in p.text:
+                    try:
+                        truck_parking_spots = int(re.search(r'# Truck Parking Spots:\s*(\d+)', p.text).group(1))
+                    except:
+                        truck_parking_spots = 0
+                    break
 
-            # Address lines (combine remaining <p> text)
-            address_lines = [p.text.strip() for p in p_tags[1:]]
+            if truck_parking_spots == 0:
+                continue  # Skip if no parking spots
+
+            # Build address and stop before (TRAVEL CENTER) or fuel stats
+            address_lines = []
+            for p in p_tags[1:]:
+                line = p.text.strip()
+                if '(TRAVEL CENTER)' in line or '# Showers' in line or '# Fuel Lanes' in line:
+                    break
+                address_lines.append(line)
             address = ' '.join(address_lines)
 
-            #appending all the truck stop info in the data list
+            # Store clean data
             data.append({
                 'State': state,
                 'Truck Stop Name': name,
@@ -89,9 +105,9 @@ for highway in highway_options:
         except Exception as e:
             print(f"Error extracting data: {e}")
 
-# saving all the data as a CSV file in 
+# Save to CSV
 df = pd.DataFrame(data)
 df.to_csv(f"{state}_truck_stops.csv", index=False, encoding='utf-8')
-print(f"\n Scraping complete. Saved {len(df)} truck stops to {state}_truck_stops.csv")
+print(f"\nScraping complete. Saved {len(df)} truck stops to {state}_truck_stops.csv")
 
 driver.quit()
