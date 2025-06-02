@@ -1,0 +1,44 @@
+
+
+basic steps for scraping:
+
+Send a request to the target website using a tool like requests (Python) or axios (JavaScript).
+
+Receive the HTML content of the page.
+
+Parse the HTML using a parser like BeautifulSoup, lxml, or Cheerio.
+
+Extract the needed data using tags, classes, IDs, or attributes.
+
+Store or process the data (e.g., save to CSV, database, or further analysis).
+
+
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+
+url = "https://quotes.toscrape.com"
+response = requests.get(url)
+response.encoding = 'utf-8'  
+soup = BeautifulSoup(response.text, 'html.parser')
+
+quotes = []
+authors = []
+tags = []
+
+for quote in soup.find_all('div', class_='quote'):
+    quotes.append(quote.find('span', class_='text').text)
+    authors.append(quote.find('small', class_='author').text)
+    tag_elements = quote.find_all('a', class_='tag')
+    tags.append(', '.join(tag.text for tag in tag_elements))
+
+df = pd.DataFrame({
+    'Quote': quotes,
+    'Author': authors,
+    'Tags': tags
+})
+
+
+df.to_csv('quotes.csv', index=False, encoding='utf-8')
+print("Scraping complete. Data saved to quotes.csv")
+print("New file created")
