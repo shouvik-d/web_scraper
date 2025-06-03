@@ -61,7 +61,7 @@ for highway in highway_options:
             highway_exit = p_tags[0].text.strip() if len(p_tags) > 0 else ""
 
             # Extract highway route 
-            match = re.search(r'Hwy\s+([A-Z]+)[\s\-]+([0-9A-Z]+)', highway_exit)    # Running search against multiple Regex patterns
+            match = re.search(r'Hwy\s+([A-Z]+)[\s\-]+([0-9A-Z]+)', highway_exit)    # Running search against multiple Regex patterns (including spaces)
             highway_route = f"{match.group(1)}-{match.group(2)}" if match else ''   # Specifically targeting Interstate and Highway routes
 
             # Extract exit
@@ -87,13 +87,14 @@ for highway in highway_options:
             # Build address and stop before (TRAVEL CENTER) or fuel stats
             address_lines = []
             for p in p_tags[1:]:
-                line = p.text.strip()
+                line = ' '.join(t.strip() for t in p.stripped_strings)
                 if '(TRAVEL CENTER)' in line or '# Showers' in line or '# Fuel Lanes' in line:
                     break
                 address_lines.append(line)
-            address = ' '.join(address_lines)
+            address = ', '.join(address_lines)
 
-            # Store clean data
+
+            # Store data
             data.append({
                 'State': state,
                 'Truck Stop Name': name,
@@ -107,7 +108,8 @@ for highway in highway_options:
 
 # Save to CSV
 df = pd.DataFrame(data)
-df.to_csv(f"{state}_truck_stops.csv", index=False, encoding='utf-8')
+output_dir = r"C:\Users\SHOUVIK\Desktop\ElectroT\web_scraper\Truckstop_data"
+df.to_csv(f"{output_dir}\\{state}_truck_stops.csv", index=False, encoding='utf-8')
 print(f"\nScraping complete. Saved {len(df)} truck stops to {state}_truck_stops.csv")
 
 driver.quit()
