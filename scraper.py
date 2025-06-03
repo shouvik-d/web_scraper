@@ -87,13 +87,14 @@ for highway in highway_options:
             # Build address and stop before (TRAVEL CENTER) or fuel stats
             address_lines = []
             for p in p_tags[1:]:
-                line = p.text.strip()
+                line = ' '.join(t.strip() for t in p.stripped_strings)
                 if '(TRAVEL CENTER)' in line or '# Showers' in line or '# Fuel Lanes' in line:
                     break
                 address_lines.append(line)
-            address = ' '.join(address_lines)
+            address = ', '.join(address_lines)
 
-            # Store clean data
+
+            # Store data
             data.append({
                 'State': state,
                 'Truck Stop Name': name,
