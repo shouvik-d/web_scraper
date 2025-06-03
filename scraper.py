@@ -104,7 +104,7 @@ for highway in highway_options:
             })
 
         except Exception as e:
-            print(f"Error extracting data: {e}")
+            print(f"Error extracting data: {e}")    #run an exception error for any other behaviour
 
 # Save to CSV
 df = pd.DataFrame(data)
