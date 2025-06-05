@@ -1,0 +1,114 @@
+# General Urban CDS parameters
+global_parameters:
+ time_step: 1 # pct of hour
+ betEnergy_path: ./data/electric_trucks.csv
+ output_folder: ./temp_output
+ google_api_folder: ./google api
+ act2_avg_tonnage: 13
+ act3_avg_tonnage: 27
+ truck_days_in_year: 300
+ faf_year: 2023
+
+simulation_varying_parameters:
+ act_cat_1_charge_rate: 19 
+ act_cat_2_charge_rate: 150 
+ act_cat_3_charge_rate: 450 # in kW
+ AC: ['High']
+ market_adoption_rate: [1]
+ charging_logic: ['upon depot arrival']
+ I-395_stations:
+  Country Travel Plaza:
+    name: 'Country Travel Plaza - 790 Pence Rd'
+    id: 'ET-5300125321100121182988712'
+    capture_rate: 0.1
+    center:
+      lat: 46.794067075958
+      lon: -118.7538685
+    north/west:
+      lat: 46.8009853560001
+      lon: -118.732211564
+    south/east:
+      lat: 46.778534726
+      lon: -118.769497492
+    hpms:
+      act2: 433
+      act3: 2011
+  MAX MART TRUCK STOP:
+    name: 'MAX MART TRUCK STOP - 528 S Ely St'
+    id: 'ET-530051038940200370018146'
+    capture_rate: 0.1
+    center:
+      lat: 46.2036604043632
+      lon: -119.1594557
+    north/west:
+      lat: 46.215250311
+      lon: -119.144328163
+    south/east:
+      lat: 46.1901329950001
+      lon: -119.169179614
+    hpms:
+      act2: 885
+      act3: 2019
+  Love's Travel Stop #811:
+    name: 'Love's Travel Stop #811 - 2252 Kartchner St'
+    id: 'ET-5302111322007129747'
+    capture_rate: 0.035
+    center:
+      lat: 46.26418959710423
+      lon: -119.0824031
+    north/west:
+      lat: 46.2783278050001
+      lon: -119.091126176
+    south/east:
+      lat: 46.248444136
+      lon: -119.126215394
+    hpms:
+      act2: 1464
+      act3: 4605
+  King City Truck Stop, LLC:
+    name: 'King City Truck Stop, LLC - 2100 E Hillsboro St'
+    id: 'ET-530211132800495261'
+    capture_rate: 0.035
+    center:
+      lat: 46.262394783504384
+      lon: -119.0843728
+    north/west:
+      lat: 46.276904605
+      lon: -119.090637731
+    south/east:
+      lat: 46.248444136
+      lon: -119.126215394
+    hpms:
+      act2: 1464
+      act3: 4605
+  Flying J Licensed Location:
+    name: 'Flying J Licensed Location - 2216 E Hillsboro St'
+    id: 'ET-5302111328028211390'
+    capture_rate: 0.03
+    center:
+      lat: 46.26234825476642
+      lon: -119.0822363
+    north/west:
+      lat: 46.276904605
+      lon: -119.090637731
+    south/east:
+      lat: 46.248444136
+      lon: -119.126215394
+    hpms:
+      act2: 1464
+      act3: 4605
+
+# General Long-haul CDS parameters
+long_haul:
+ interstate:
+  name: I-395
+  nw_metro_station: West Virginia
+  pt_nw_lat: 39.663552
+  pt_nw_lon: -79.476611
+  se_metro_station: Baltimore
+  pt_se_lat: 39.71043103599872
+  pt_se_lon: -78.18724432872503
+ SOC_threshold: 0.3
+ truck_arrival_distribution_path: ./data/longhaul/truck_stop_arrival_distribution.csv
+ routes_path: ./data/longhaul/od_routing_2023.pkl
+ scenario_data: ./data/scenario_data_MD.csv

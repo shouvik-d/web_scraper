@@ -1,0 +1,178 @@
+# General Urban CDS parameters
+global_parameters:
+ time_step: 1 # pct of hour
+ betEnergy_path: ./data/electric_trucks.csv
+ output_folder: ./temp_output
+ google_api_folder: ./google api
+ act2_avg_tonnage: 13
+ act3_avg_tonnage: 27
+ truck_days_in_year: 300
+ faf_year: 2023
+
+simulation_varying_parameters:
+ act_cat_1_charge_rate: 19 
+ act_cat_2_charge_rate: 150 
+ act_cat_3_charge_rate: 450 # in kW
+ AC: ['High']
+ market_adoption_rate: [1]
+ charging_logic: ['upon depot arrival']
+ I-90_stations:
+  BIG B TRUCK STOP:
+    name: 'BIG B TRUCK STOP - 2008 Durry Rd'
+    id: 'ET-5300119352308600012986471'
+    capture_rate: 0.1
+    center:
+      lat: 47.209115019341795
+      lon: -118.226589
+    north/west:
+      lat: 47.217461063
+      lon: -118.20542402
+    south/east:
+      lat: 47.2000715280001
+      lon: -118.24555464
+    hpms:
+      act2: 1067
+      act3: 4336
+  Love's Travel Stop:
+    name: 'Love's Travel Stop - 4315 Prichard Rd'
+    id: 'ET-5302531458800058046'
+    capture_rate: 0.1
+    center:
+      lat: 47.10275512635454
+      lon: -119.3408019
+    north/west:
+      lat: 47.103916473
+      lon: -119.394436464
+    south/east:
+      lat: 47.1038997000001
+      lon: -119.364773885
+    hpms:
+      act2: 920
+      act3: 4243
+  Shree's Truck Stop:
+    name: 'Shree's Truck Stop - 404 S Frontage Rd NW'
+    id: 'ET-530250308620004732'
+    capture_rate: 0.1
+    center:
+      lat: 47.082932328895986
+      lon: -119.860011
+    north/west:
+      lat: 47.0951950670001
+      lon: -119.843157836
+    south/east:
+      lat: 47.0717365730001
+      lon: -119.876204106
+    hpms:
+      act2: 664
+      act3: 3122
+  Colville Fuels Half Sun Travel Plaza:
+    name: 'Colville Fuels Half Sun Travel Plaza - 420 S Wanapum Dr'
+    id: 'ET-5302509038301015167'
+    capture_rate: 0.05
+    center:
+      lat: 47.09871455725336
+      lon: -119.3167927
+    north/west:
+      lat: 47.1017393830001
+      lon: -119.293425405
+    south/east:
+      lat: 47.101056268
+      lon: -119.261981005
+    hpms:
+      act2: 929
+      act3: 3902
+  Ernie's Fuel Stop:
+    name: 'Ernie's Fuel Stop - 1810 Kittelson Rd'
+    id: 'ET-5302509139810117053'
+    capture_rate: 0.05
+    center:
+      lat: 47.102105102284504
+      lon: -119.2451381
+    north/west:
+      lat: 47.102090058
+      lon: -119.27028907
+    south/east:
+      lat: 47.0969960630001
+      lon: -119.223610643
+    hpms:
+      act2: 929
+      act3: 3902
+  TA Travel Center:
+    name: 'TA Travel Center - 46600 SE N Bend Way'
+    id: 'ET-530332423089001194660'
+    capture_rate: 0.1
+    center:
+      lat: 47.468459597400674
+      lon: -121.7169681
+    north/west:
+      lat: 47.472945232
+      lon: -121.740855449
+    south/east:
+      lat: 47.454427276
+      lon: -121.702164268
+    hpms:
+      act2: 1557
+      act3: 5907
+  Petro Travel Center:
+    name: 'Petro Travel Center - 10506 W Aero Rd'
+    id: 'ET-53063240729068336272'
+    capture_rate: 0.1
+    center:
+      lat: 47.5907172855777
+      lon: -117.5610335
+    north/west:
+      lat: 47.602201849
+      lon: -117.542204869
+    south/east:
+      lat: 47.5791175520001
+      lon: -117.578508449
+    hpms:
+      act2: 1516
+      act3: 5771
+  ONE9 Dealer:
+    name: 'ONE9 Dealer - 3709 S Geiger Blvd'
+    id: 'ET-53063253350124341153'
+    capture_rate: 0.1
+    center:
+      lat: 47.620735957112224
+      lon: -117.5058791
+    north/west:
+      lat: 47.6283457420001
+      lon: -117.488539075
+    south/east:
+      lat: 47.6082075890001
+      lon: -117.527489086
+    hpms:
+      act2: 1516
+      act3: 5771
+  Pilot Dealer:
+    name: 'Pilot Dealer - 6606 E Broadway Ave'
+    id: 'ET-53063351330501264482'
+    capture_rate: 0.1
+    center:
+      lat: 47.663368742621195
+      lon: -117.3157742
+    north/west:
+      lat: 47.6715180680001
+      lon: -117.294298146
+    south/east:
+      lat: 47.653754668
+      lon: -117.335608964
+    hpms:
+      act2: 3362
+      act3: 3754
+
+# General Long-haul CDS parameters
+long_haul:
+ interstate:
+  name: I-90
+  nw_metro_station: West Virginia
+  pt_nw_lat: 39.663552
+  pt_nw_lon: -79.476611
+  se_metro_station: Baltimore
+  pt_se_lat: 39.71043103599872
+  pt_se_lon: -78.18724432872503
+ SOC_threshold: 0.3
+ truck_arrival_distribution_path: ./data/longhaul/truck_stop_arrival_distribution.csv
+ routes_path: ./data/longhaul/od_routing_2023.pkl
+ scenario_data: ./data/scenario_data_MD.csv

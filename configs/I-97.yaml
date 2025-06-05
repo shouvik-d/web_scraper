@@ -1,0 +1,66 @@
+# General Urban CDS parameters
+global_parameters:
+ time_step: 1 # pct of hour
+ betEnergy_path: ./data/electric_trucks.csv
+ output_folder: ./temp_output
+ google_api_folder: ./google api
+ act2_avg_tonnage: 13
+ act3_avg_tonnage: 27
+ truck_days_in_year: 300
+ faf_year: 2023
+
+simulation_varying_parameters:
+ act_cat_1_charge_rate: 19 
+ act_cat_2_charge_rate: 150 
+ act_cat_3_charge_rate: 450 # in kW
+ AC: ['High']
+ market_adoption_rate: [1]
+ charging_logic: ['upon depot arrival']
+ I-97_stations:
+  Wenatchee Valley Truck Stop:
+    name: 'Wenatchee Valley Truck Stop - 3607 US-97 ALT'
+    id: 'ET-530072320153102001776'
+    capture_rate: 0.05
+    center:
+      lat: 47.484063181520014
+      lon: -120.3181164
+    north/west:
+      lat: 47.500040133
+      lon: -120.311667331
+    south/east:
+      lat: 47.359521064
+      lon: -120.563611054
+    hpms:
+      act2: 415
+      act3: 137
+  Omak Travel Plaza & China Express:
+    name: 'Omak Travel Plaza & China Express - 800 Riverside Dr'
+    id: 'ET-53047342625300834809'
+    capture_rate: 0.1
+    center:
+      lat: 48.41588475152245
+      lon: -119.5107563
+    north/west:
+      lat: 48.4271745
+      lon: -119.496629105
+    south/east:
+      lat: 48.402159489
+      lon: -119.523642445
+    hpms:
+      act2: 357
+      act3: 318
+
+# General Long-haul CDS parameters
+long_haul:
+ interstate:
+  name: I-97
+  nw_metro_station: West Virginia
+  pt_nw_lat: 39.663552
+  pt_nw_lon: -79.476611
+  se_metro_station: Baltimore
+  pt_se_lat: 39.71043103599872
+  pt_se_lon: -78.18724432872503
+ SOC_threshold: 0.3
+ truck_arrival_distribution_path: ./data/longhaul/truck_stop_arrival_distribution.csv
+ routes_path: ./data/longhaul/od_routing_2023.pkl
+ scenario_data: ./data/scenario_data_MD.csv

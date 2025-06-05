@@ -1,0 +1,274 @@
+# General Urban CDS parameters
+global_parameters:
+ time_step: 1 # pct of hour
+ betEnergy_path: ./data/electric_trucks.csv
+ output_folder: ./temp_output
+ google_api_folder: ./google api
+ act2_avg_tonnage: 13
+ act3_avg_tonnage: 27
+ truck_days_in_year: 300
+ faf_year: 2023
+
+simulation_varying_parameters:
+ act_cat_1_charge_rate: 19 
+ act_cat_2_charge_rate: 150 
+ act_cat_3_charge_rate: 450 # in kW
+ AC: ['High']
+ market_adoption_rate: [1]
+ charging_logic: ['upon depot arrival']
+ I-5_stations:
+  Rebel Truck Stop:
+    name: 'Rebel Truck Stop - 7349 Old Pacific Hwy S'
+    id: 'ET-53015411630100338183'
+    capture_rate: 0.1
+    center:
+      lat: 45.985039412195526
+      lon: -122.8265795
+    north/west:
+      lat: 45.997729292
+      lon: -122.840320371
+    south/east:
+      lat: 45.9689682310001
+      lon: -122.813701998
+    hpms:
+      act2: 3119
+      act3: 10094
+  Space Age Travel Center:
+    name: 'Space Age Travel Center - 9515 Old Pacific Hwy N'
+    id: 'ET-53015WK2714002335093'
+    capture_rate: 0.1
+    center:
+      lat: 46.32196431661089
+      lon: -122.9126259
+    north/west:
+      lat: 46.337788894
+      lon: -122.907646991
+    south/east:
+      lat: 46.3051694490001
+      lon: -122.912334594
+    hpms:
+      act2: 2081
+      act3: 8334
+  Ernie's Federal Way Truck Stop:
+    name: 'Ernie's Federal Way Truck Stop - 33101 Pacific Hwy S'
+    id: 'ET-530331721049100131436'
+    capture_rate: 0.03
+    center:
+      lat: 47.304849593639965
+      lon: -122.3139823
+    north/west:
+      lat: 47.317635366
+      lon: -122.296209319
+    south/east:
+      lat: 47.285276524
+      lon: -122.307854175
+    hpms:
+      act2: 5144
+      act3: 7932
+  Ernie's Fuel Stop:
+    name: 'Ernie's Fuel Stop - 22018 84th Ave S'
+    id: 'ET-530337757800044505954'
+    capture_rate: 0.1
+    center:
+      lat: 47.40433575040538
+      lon: -122.227394
+    north/west:
+      lat: 47.4478217400001
+      lon: -122.266499267
+    south/east:
+      lat: 47.4191117400001
+      lon: -122.288037328
+    hpms:
+      act2: 6302
+      act3: 9716
+  Gee Cee's Truck Stop:
+    name: 'Gee Cee's Truck Stop - 123 Foster Creek Rd'
+    id: 'ET-53041012704000000901409'
+    capture_rate: 0.1
+    center:
+      lat: 46.39278032824186
+      lon: -122.9052264
+    north/west:
+      lat: 46.4065107640001
+      lon: -122.890492219
+    south/east:
+      lat: 46.3751289630001
+      lon: -122.905821417
+    hpms:
+      act2: 2081
+      act3: 8334
+  Wilson Oil/Napavine Travel Plaza:
+    name: 'Wilson Oil/Napavine Travel Plaza - 1366 Rush Rd'
+    id: 'ET-53041017875004000935802'
+    capture_rate: 0.035
+    center:
+      lat: 46.60708081907757
+      lon: -122.9049879
+    north/west:
+      lat: 46.6176301690001
+      lon: -122.922227454
+    south/east:
+      lat: 46.5910982670001
+      lon: -122.895496476
+    hpms:
+      act2: 2914
+      act3: 11670
+  Love's Travel Stop:
+    name: 'Love's Travel Stop - 1501 33rd Ave E'
+    id: 'ET-53053032002410994336'
+    capture_rate: 0.1
+    center:
+      lat: 47.24538655210495
+      lon: -122.3847012
+    north/west:
+      lat: 47.2410624290001
+      lon: -122.344489991
+    south/east:
+      lat: 47.2392342730001
+      lon: -122.407467541
+    hpms:
+      act2: 5706
+      act3: 8797
+  Eagle Truck Plaza:
+    name: 'Eagle Truck Plaza - 110 Estep Rd'
+    id: 'ET-53041018134007000957456'
+    capture_rate: 0.1
+    center:
+      lat: 46.58479749627254
+      lon: -122.8849622
+    north/west:
+      lat: 46.5956416160001
+      lon: -122.899856056
+    south/east:
+      lat: 46.5666354900001
+      lon: -122.877397333
+    hpms:
+      act2: 2595
+      act3: 10391
+  Sumner Truck Stop & Travel Plaza:
+    name: 'Sumner Truck Stop & Travel Plaza - 2320 136th Ave E'
+    id: 'ET-530534495401161136616'
+    capture_rate: 0.065
+    center:
+      lat: 47.23623732024216
+      lon: -122.2495392
+    north/west:
+      lat: 47.289880344
+      lon: -122.306276025
+    south/east:
+      lat: 47.26082167
+      lon: -122.326725515
+    hpms:
+      act2: 5144
+      act3: 7932
+  Pilot Express:
+    name: 'Pilot Express - 1440 Puyallup Ave'
+    id: 'ET-530534715010367182621'
+    capture_rate: 0.1
+    center:
+      lat: 47.24176607044097
+      lon: -122.4121476
+    north/west:
+      lat: 47.2414352650001
+      lon: -122.389769047
+    south/east:
+      lat: 47.2328498640001
+      lon: -122.434351271
+    hpms:
+      act2: 5921
+      act3: 9129
+  Donna's Travel Plaza Inc:
+    name: 'Donna's Travel Plaza Inc - 3104 116th St NE'
+    id: 'ET-5306130050800400300102150'
+    capture_rate: 0.1
+    center:
+      lat: 48.09952141774726
+      lon: -122.1885586
+    north/west:
+      lat: 48.1147455230001
+      lon: -122.184826338
+    south/east:
+      lat: 48.082770044
+      lon: -122.184690972
+    hpms:
+      act2: 4430
+      act3: 6165
+  ONE9 Dealer:
+    name: 'ONE9 Dealer - 1801 Pioneer Hwy US I-5'
+    id: 'ET-530613105070010100012311'
+    capture_rate: 0.03
+    center:
+      lat: 48.18829025087227
+      lon: -122.2056771
+    north/west:
+      lat: 48.2050769800001
+      lon: -122.213736862
+    south/east:
+      lat: 48.1751461420001
+      lon: -122.192741952
+    hpms:
+      act2: 3156
+      act3: 4465
+  Pilot Travel Center:
+    name: 'Pilot Travel Center - 5670 Barrett Rd'
+    id: 'ET-530739572463495'
+    capture_rate: 0.05
+    center:
+      lat: 48.84868699
+      lon: -122.571907
+    north/west:
+      lat: 48.8595545840001
+      lon: -122.587518081
+    south/east:
+      lat: 48.8314128160001
+      lon: -122.561731921
+    hpms:
+      act2: 1229
+      act3: 2128
+  Flying J Travel Center:
+    name: 'Flying J Travel Center - 2725 93rd Ave SW'
+    id: 'ET-530671272121020016058'
+    capture_rate: 0.05
+    center:
+      lat: 46.9523575554885
+      lon: -122.9407121
+    north/west:
+      lat: 46.966500845
+      lon: -122.933406414
+    south/east:
+      lat: 46.9348501810001
+      lon: -122.942700767
+    hpms:
+      act2: 2702
+      act3: 8551
+  TA Express:
+    name: 'TA Express - 1300 Boblett St'
+    id: 'ET-5307318636176688'
+    capture_rate: 0.1
+    center:
+      lat: 48.99158292813011
+      lon: -122.7336996
+    north/west:
+      lat: 48.9987402400001
+      lon: -122.753040571
+    south/east:
+      lat: 48.973674198
+      lon: -122.721561678
+    hpms:
+      act2: 32
+      act3: 12
+
+# General Long-haul CDS parameters
+long_haul:
+ interstate:
+  name: I-5
+  nw_metro_station: West Virginia
+  pt_nw_lat: 39.663552
+  pt_nw_lon: -79.476611
+  se_metro_station: Baltimore
+  pt_se_lat: 39.71043103599872
+  pt_se_lon: -78.18724432872503
+ SOC_threshold: 0.3
+ truck_arrival_distribution_path: ./data/longhaul/truck_stop_arrival_distribution.csv
+ routes_path: ./data/longhaul/od_routing_2023.pkl
+ scenario_data: ./data/scenario_data_MD.csv

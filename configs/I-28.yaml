@@ -1,0 +1,50 @@
+# General Urban CDS parameters
+global_parameters:
+ time_step: 1 # pct of hour
+ betEnergy_path: ./data/electric_trucks.csv
+ output_folder: ./temp_output
+ google_api_folder: ./google api
+ act2_avg_tonnage: 13
+ act3_avg_tonnage: 27
+ truck_days_in_year: 300
+ faf_year: 2023
+
+simulation_varying_parameters:
+ act_cat_1_charge_rate: 19 
+ act_cat_2_charge_rate: 150 
+ act_cat_3_charge_rate: 450 # in kW
+ AC: ['High']
+ market_adoption_rate: [1]
+ charging_logic: ['upon depot arrival']
+ I-28_stations:
+  BJS AUTO TRUCK PLAZA:
+    name: 'BJS AUTO TRUCK PLAZA - 100 Rock Island Dr'
+    id: 'ET-5301710200001901802'
+    capture_rate: 0.05
+    center:
+      lat: 47.3721994779767
+      lon: -120.1396619
+    north/west:
+      lat: 47.372596839
+      lon: -120.163567353
+    south/east:
+      lat: 47.3645755690001
+      lon: -120.120176685
+    hpms:
+      act2: 691
+      act3: 824
+
+# General Long-haul CDS parameters
+long_haul:
+ interstate:
+  name: I-28
+  nw_metro_station: West Virginia
+  pt_nw_lat: 39.663552
+  pt_nw_lon: -79.476611
+  se_metro_station: Baltimore
+  pt_se_lat: 39.71043103599872
+  pt_se_lon: -78.18724432872503
+ SOC_threshold: 0.3
+ truck_arrival_distribution_path: ./data/longhaul/truck_stop_arrival_distribution.csv
+ routes_path: ./data/longhaul/od_routing_2023.pkl
+ scenario_data: ./data/scenario_data_MD.csv
