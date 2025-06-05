@@ -1,0 +1,130 @@
+# General Urban CDS parameters
+global_parameters:
+ time_step: 1 # pct of hour
+ betEnergy_path: ./data/electric_trucks.csv
+ output_folder: ./temp_output
+ google_api_folder: ./google api
+ act2_avg_tonnage: 13
+ act3_avg_tonnage: 27
+ truck_days_in_year: 300
+ faf_year: 2023
+
+simulation_varying_parameters:
+ act_cat_1_charge_rate: 19 
+ act_cat_2_charge_rate: 150 
+ act_cat_3_charge_rate: 450 # in kW
+ AC: ['High']
+ market_adoption_rate: [1]
+ charging_logic: ['upon depot arrival']
+ I-82_stations:
+  Love's Travel Stop:
+    name: 'Love's Travel Stop - 700 Wine Country Rd'
+    id: 'ET-5300513494401349800370962'
+    capture_rate: 0.065
+    center:
+      lat: 46.2196300127845
+      lon: -119.7933024
+    north/west:
+      lat: 46.2332639040001
+      lon: -119.810932078
+    south/east:
+      lat: 46.221166435
+      lon: -119.770873932
+    hpms:
+      act2: 917
+      act3: 2790
+  Ameristar Horse Heaven Hills Travel Plaza:
+    name: 'Ameristar Horse Heaven Hills Travel Plaza - 101 Merlot Dr'
+    id: 'ET-5300513594301166100165685'
+    capture_rate: 0.1
+    center:
+      lat: 46.22093645794286
+      lon: -119.7886765
+    north/west:
+      lat: 46.231220846
+      lon: -119.807997249
+    south/east:
+      lat: 46.221139523
+      lon: -119.764645316
+    hpms:
+      act2: 773
+      act3: 2354
+  Rainier Place:
+    name: 'Rainier Place - 1811 Rainier Pl'
+    id: 'ET-530771913324202522886'
+    capture_rate: 0.02
+    center:
+      lat: 46.56689314726971
+      lon: -120.4765264
+    north/west:
+      lat: 46.5825890940001
+      lon: -120.472333184
+    south/east:
+      lat: 46.551199404
+      lon: -120.470610632
+    hpms:
+      act2: 1559
+      act3: 3612
+  Gear Jammer Truck and Auto Plaza:
+    name: 'Gear Jammer Truck and Auto Plaza - 2310 Rudkin Rd'
+    id: 'ET-530771913324203122472'
+    capture_rate: 0.05
+    center:
+      lat: 46.56906640376661
+      lon: -120.4735365
+    north/west:
+      lat: 46.586676928
+      lon: -120.473734991
+    south/east:
+      lat: 46.552695736
+      lon: -120.47057044
+    hpms:
+      act2: 1559
+      act3: 3612
+  Granger Travel Plaza:
+    name: 'Granger Travel Plaza - 1221 Bailey Ave'
+    id: 'ET-530772110222140335927'
+    capture_rate: 0.1
+    center:
+      lat: 46.344904344766086
+      lon: -120.1794596
+    north/west:
+      lat: 46.3554877350001
+      lon: -120.197425588
+    south/east:
+      lat: 46.3384307040001
+      lon: -120.15939958
+    hpms:
+      act2: 934
+      act3: 2842
+  Ameristar Outpost Travel Plaza:
+    name: 'Ameristar Outpost Travel Plaza - 1825 Waneta Rd'
+    id: 'ET-530772310314143139445'
+    capture_rate: 0.08
+    center:
+      lat: 46.309434070924866
+      lon: -119.9792283
+    north/west:
+      lat: 46.306580717
+      lon: -120.041101154
+    south/east:
+      lat: 46.305863463
+      lon: -120.004132976
+    hpms:
+      act2: 858
+      act3: 2612
+
+# General Long-haul CDS parameters
+long_haul:
+ interstate:
+  name: I-82
+  nw_metro_station: West Virginia
+  pt_nw_lat: 39.663552
+  pt_nw_lon: -79.476611
+  se_metro_station: Baltimore
+  pt_se_lat: 39.71043103599872
+  pt_se_lon: -78.18724432872503
+ SOC_threshold: 0.3
+ truck_arrival_distribution_path: ./data/longhaul/truck_stop_arrival_distribution.csv
+ routes_path: ./data/longhaul/od_routing_2023.pkl
+ scenario_data: ./data/scenario_data_MD.csv

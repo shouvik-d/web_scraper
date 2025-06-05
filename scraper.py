@@ -50,7 +50,7 @@ def get_user_input():
             return user_input
         
         print("Invalid input. Please enter a valid state code, multiple codes separated by commas, or 'ALL'.")
-
+    
 def setup_geocoders():
     """Initialize geocoders"""
     arcgis_locator = ArcGIS(user_agent="arcgis_geo_coder", timeout=3)
